@@ -8,12 +8,16 @@ def send_payload():
         sock.connect((host, port))
         print("Connected to server...")
 
-        payload = "{khoo,swee,chuan}"
+        payload = "**&^$" #"{khoo,swee,chuan}"
         data = payload.encode("utf-8")
 
         sock.sendall(data)
 
         print("Sent payload...")
+        response = sock.recv(1024)
+        response_code = response.decode("utf-8")
+
+        print("Received response code: {}".format(response_code))
 
 if __name__ == "__main__":
     send_payload()
